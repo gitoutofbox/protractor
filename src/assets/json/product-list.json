@@ -1,0 +1,20 @@
+{
+    "status": "success",
+    "statusMessage": "",
+    "data" : [
+        {
+            "id": 1,
+            "name": "Product1",
+            "description":"Product description",
+            "price": 100,
+            "image": "p1.jpeg"
+        },
+        {
+            "id": 2,
+            "name": "Product2",
+            "description":"Product description",
+            "price": 200,
+            "image": "p1.jpeg"
+        }
+    ]
+}
