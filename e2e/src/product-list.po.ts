@@ -8,4 +8,10 @@ export class ProductListPage {
   async isListPresent(): Promise<boolean> {
     return element(by.css('app-product-list ul')).isPresent();
   }
+  addButton() {
+    return element(by.buttonText("Add"));
+  }
+  async addModalElement() {
+    return element(by.css(".add-product"));
+  }
 }

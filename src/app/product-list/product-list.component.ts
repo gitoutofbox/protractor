@@ -29,7 +29,7 @@ export class ProductListComponent implements OnInit {
     const initialState = {
       title: 'Add Product'
     };
-    this.bsModalRef = this.modalService.show(ProductAddComponent, { initialState, class: 'modal-lg' });
+    this.bsModalRef = this.modalService.show(ProductAddComponent, { initialState, class: 'add-product modal-lg' });
     this.bsModalRef.content.closeBtnName = 'Close';
   }
 }

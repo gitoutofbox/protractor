@@ -1,4 +1,4 @@
-import { browser, logging } from 'protractor';
+import { browser, by, element, logging } from 'protractor';
 import { ProductListPage } from './product-list.po';
 
 describe('workspace-project App', () => {
@@ -11,6 +11,12 @@ describe('workspace-project App', () => {
   it('should display welcome message', async () => {
     await page.navigateTo();
     expect(await page.isListPresent()).toBeTruthy("Product list rendered");
+  });
+
+  it('should open add product modal', async () => {
+    // await page.navigateTo();
+    page.addButton().click();
+    expect(page.addModalElement()).toBeTruthy("Add Product modal opened");
   });
 
   afterEach(async () => {
