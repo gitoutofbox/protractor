@@ -1,8 +1,9 @@
 <br />
 <div>
-    <button class="btn btn-primary float-right">Add</button>
+    <button class="btn btn-primary float-right" (click)="addProduct()">Add</button>
 </div>
 <br />
+<!-- <app-product-add></app-product-add> -->
 <ul>
     <li *ngFor="let item of products">
         <div class="img"><img src="assets/img/{{item.image}}" /></div>
