@@ -42,6 +42,6 @@ export class ProductListPage {
   }
 
   getProductName() {
-    return element(by.cssContainingText(".product-name", "Automation Product")).isPresent();
+    return element(by.cssContainingText(".product-name", "Automation Product"));
   }
 }

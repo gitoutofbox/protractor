@@ -13,38 +13,35 @@ describe('workspace-project App', () => {
     expect(await page.isListPresent()).toBeTruthy("Product list rendered");
   });
 
-  it('should open add product modal', async () => {
-    await page.navigateTo();
+  it('should open & close add product modal', async () => {
+    // await page.navigateTo();
     await page.addButton().click();
     expect(page.addModalElement()).toBeTruthy("Add Product modal opened");
+    await page.closeButton().click();
+    expect(page.addModalElement()).toBeFalsy("Add Product modal closed");
   });
 
-  // it('should close add product modal on click on close button', () => {
-  //   page.closeButton().click().then(()=>{
-  //     expect(page.addModalElement()).toBeFalsy("Add Product modal closed");
-  //   })
-  // });
-
-  //Validation check
-  // it('should validate the form on Save click', async () => {
-  //   await page.navigateTo();
-  //   await page.saveButton().click();
-  //     expect( page.nameErrorElement().isPresent()).toBeTruthy("Name required error message shown");    
-  //     expect( page.priceErrorElement().isPresent()).toBeTruthy("Price required error message shown");    
-  //     expect( page.descriptionErrorElement().isPresent()).toBeFalsy("Description required error message shown");
-        
-  // });
+  // Validation check
+  it('should validate the form on Save click', async () => {
+    // await page.navigateTo();
+    await page.addButton().click();
+    await page.saveButton().click();
+    expect( page.nameErrorElement().isPresent()).toBeTruthy("Name required error message shown");    
+    expect( page.priceErrorElement().isPresent()).toBeTruthy("Price required error message shown");    
+    expect( page.descriptionErrorElement().isPresent()).toBeFalsy("Description required error message shown");
+    await page.closeButton().click();
+  });
 
   it('should create a new product', async () => {
-    await page.navigateTo();
+    // await page.navigateTo();
     await page.addButton().click();
-    //.then(() => {
-      page.getInputField('name').sendKeys("Automation Product");  
-      page.getInputField('price').sendKeys("167");
-      page.getTextareaField('description').sendKeys("Automation Description");  
-      page.saveButton().click();
-      expect( page.getProductName()).toBeTruthy("New product created"); 
-    // })      
+    page.getInputField('name').sendKeys("Automation Product");  
+    page.getInputField('price').sendKeys("167");
+    page.getTextareaField('description').sendKeys("Automation Description");  
+    await page.saveButton().click();
+    browser.sleep(5000);
+    console.log("asdasd", await page.getProductName().isPresent())
+    expect( await page.getProductName().isPresent()).toBeTruthy("New product created"); 
   });
 
   afterEach(async () => {
