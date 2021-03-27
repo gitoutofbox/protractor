@@ -31,5 +31,10 @@ export class ProductListComponent implements OnInit {
     };
     this.bsModalRef = this.modalService.show(ProductAddComponent, { initialState, class: 'add-product modal-lg' });
     this.bsModalRef.content.closeBtnName = 'Close';
+    this.bsModalRef.content.event.subscribe(resp => {
+      console.log('Child component\'s event was triggered', resp);
+      this.products.push(resp.data)
+      console.log(this.products)
+    });
   }
 }

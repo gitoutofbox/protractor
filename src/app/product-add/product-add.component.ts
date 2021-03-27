@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 
@@ -11,6 +11,7 @@ export class ProductAddComponent implements OnInit {
   public productForm: any; 
   public title: string ='';
   public submitted: boolean = false;
+  public event: EventEmitter<any> = new EventEmitter();
   constructor(
     private fb: FormBuilder,
     public bsModalRef: BsModalRef
@@ -19,6 +20,7 @@ export class ProductAddComponent implements OnInit {
       id: [""],
       name: ["",[Validators.required]],
       price: ["", [Validators.required]],
+      image: [""],
       description:[]
     })
    }
@@ -27,5 +29,9 @@ export class ProductAddComponent implements OnInit {
   }
   save() {
     this.submitted = true;
+    if(this.productForm.valid) {
+      this.event.emit({data: this.productForm.value});
+      this.bsModalRef.hide();
+    }
   }
 }

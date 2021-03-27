@@ -28,7 +28,20 @@ export class ProductListPage {
     return element(by.cssContainingText(".invalid-feedback", "Price is required"));
   }
   descriptionErrorElement() {
-    return element(by.cssContainingText(".invalid-feedback", "Price is required"));
+    return element(by.cssContainingText(".invalid-feedback", "Description is required"));
   }
   
+  //Form sve
+  getInputField(formControl) {
+    // return element(by.css(`.product_name`));
+    return element(by.css(`input[formcontrolname="${formControl}"]`));
+  }
+  getTextareaField(formControl) {
+    // return element(by.css(`.product_name`));
+    return element(by.css(`textarea[formcontrolname="${formControl}"]`));
+  }
+
+  getProductName() {
+    return element(by.cssContainingText(".product-name", "Automation Product")).isPresent();
+  }
 }

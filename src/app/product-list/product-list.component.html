@@ -6,9 +6,11 @@
 <!-- <app-product-add></app-product-add> -->
 <ul>
     <li *ngFor="let item of products">
-        <div class="img"><img src="assets/img/{{item.image}}" /></div>
-        <h4>{{item.name}}</h4>
-        <div>{{item.price}}</div>
-        <div>{{item.description}}</div>
+        <div class="img">
+            <img src="assets/img/{{item.image}}" onerror="this.src='assets/img/no-image.jpg'" />
+        </div>
+        <h4 class="product-name">{{item.name}}</h4>
+        <div class="product-price">{{item.price}}</div>
+        <div class="product-description">{{item.description}}</div>
     </li>
 </ul>
