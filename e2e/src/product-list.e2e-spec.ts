@@ -14,7 +14,6 @@ describe('workspace-project App', () => {
   });
 
   it('should open & close add product modal', async () => {
-    // await page.navigateTo();
     await page.addButton().click();
     expect(page.addModalElement()).toBeTruthy("Add Product modal opened");
     await page.closeButton().click();
@@ -23,7 +22,6 @@ describe('workspace-project App', () => {
 
   // Validation check
   it('should validate the form on Save click', async () => {
-    // await page.navigateTo();
     await page.addButton().click();
     await page.saveButton().click();
     expect( page.nameErrorElement().isPresent()).toBeTruthy("Name required error message shown");    
@@ -33,14 +31,11 @@ describe('workspace-project App', () => {
   });
 
   it('should create a new product', async () => {
-    // await page.navigateTo();
     await page.addButton().click();
     page.getInputField('name').sendKeys("Automation Product");  
     page.getInputField('price').sendKeys("167");
     page.getTextareaField('description').sendKeys("Automation Description");  
     await page.saveButton().click();
-    browser.sleep(5000);
-    console.log("asdasd", await page.getProductName().isPresent())
     expect( await page.getProductName().isPresent()).toBeTruthy("New product created"); 
   });
 
